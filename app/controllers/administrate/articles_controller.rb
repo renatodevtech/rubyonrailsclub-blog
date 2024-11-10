@@ -29,7 +29,7 @@ module Administrate
       respond_to do |format|
         if @article.save
           # format.html { redirect_to(@article, notice: "Article was successfully created.") }
-          format.html { redirect_to administrate_articles_path(@article), notice: "Article was successfully created." }
+          format.html { redirect_to(administrate_articles_path(@article), notice: "Article was successfully created.") }
 
           format.json { render(:show, status: :created, location: @article) }
         else
@@ -66,7 +66,7 @@ module Administrate
 
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params[:id])
+      @article = Article.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
